@@ -1,0 +1,25 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Web Comments Section</h1>
+    <p>Please let us know, how are you doing!</p>
+
+    <br /><br />
+    <h4>Your message</h4>
+    <form method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <label asp-for="Comment.Name" class="control-label">Name</label>
+            <input type="text" asp-for="Comment.Name" class="form-control" />
+            <span asp-validation-for="Comment.Name" class="text-danger"></span>
+        <br />
+            <label asp-for="Comment.Message" class="control-label">Message</label>
+            <input type="text" asp-for="Comment.Message" class="form-control" />
+            <span asp-validation-for="Comment.Message" class="text-danger"></span>
+        <br />
+        <input type="submit" value="Submit" class="btn btn-primary"/>
+    </form>
+    </div>
