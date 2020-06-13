@@ -20,6 +20,15 @@
             <input type="text" asp-for="Comment.Message" class="form-control" />
             <span asp-validation-for="Comment.Message" class="text-danger"></span>
             <br />
+            <label asp-for="Comment.Rating" class="control-label">Rating</label>
+            <input id="rating" type="hidden" asp-for="Comment.Rating" class="form-control" value="0" />
+            <span asp-validation-for="Comment.Rating" class="text-danger"></span>
+            <br />
+
+            @for (int star = 0; star < 5; star++) {
+                <img src="~/lib/images/star-empty.png" alt="" class="ratingStar" />
+            }
+            <br /><br />
             <input type="submit" value="Submit" class="btn btn-primary" />
         </form>
 
@@ -44,12 +53,18 @@
                                 @Html.DisplayFor(modelItem => item.Timestamp)
                             </td>
                             <td>
-                                Like it<br />
-                                <img src="~/lib/images/star-empty.png" alt="" class="ratingStar" data-value="1" />
-                                <img src="~/lib/images/star-empty.png" alt="" class="ratingStar" data-value="2" />
-                                <img src="~/lib/images/star-empty.png" alt="" class="ratingStar" data-value="3" />
-                                <img src="~/lib/images/star-empty.png" alt="" class="ratingStar" data-value="4" />
-                                <img src="~/lib/images/star-empty.png" alt="" class="ratingStar" data-value="5" />
+                                @if (item.Rating == 0) {
+                                    for (int star = 0; star < 5; star++) {
+                                        <img src="~/lib/images/star-empty.png" alt="" class="ratingStarDisplay" />
+                                    }
+                                } else {
+                                    for (int star = 0; star < item.Rating; star++) {
+                                        <img src="~/lib/images/star-yellow.png" alt="" class="ratingStarDisplay" />
+                                    }
+                                    for (int star = 0; star < (5 - item.Rating); star++) {
+                                        <img src="~/lib/images/star-empty.png" alt="" class="ratingStarDisplay" />
+                                    }
+                                }
                             </td>
                         </tr>
                     }

@@ -30,15 +30,23 @@ function giveRating(img, image) {
 	});
 }
 
-//      $("img.ratingStar").click(function (e) {
-//         // $("img.rating").unbind("mouseout mouseover click");
-	//	$(this).css('color', 'red');
-	//	// alert(e.currentTarget + ' was clicked!');
-	//	// call ajax methods to update database
-	//	var url = "/Movies/PostRating?rating=" + parseInt($(this).attr("id")) + "&mid=" + parseInt($(this).attr("mid"));
-//          $.post(url, null, function (data) {
-//              $(e.currentTarget).closest('tr').find('div.result').text(data).css('color','red') // $("#result").text(data);
-	//	});
-	//});
+$("img.ratingStar").click(function (e) {
+	// disable stars events after first onclick - not possible to update rating
+	// (user must reload page to update rating)
+	$("img.ratingStar").unbind("mouseout mouseover click");
+
+	var rating = 0;
+	var starsCollection = document.getElementsByClassName("ratingStar");
+	var stars = Array.from(starsCollection);
+	stars.forEach(function (element) {
+		// count if rating contains yellow star
+		if (element.src.indexOf("star-yellow.png") != -1) {
+			rating++;
+		};
+	});
+
+	document.getElementById("rating").setAttribute("value", rating);
+
+});
 
 
