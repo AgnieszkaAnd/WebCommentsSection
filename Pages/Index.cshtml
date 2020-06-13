@@ -43,7 +43,14 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Timestamp)
                             </td>
-                            <td>Like it</td>
+                            <td>
+                                Like it<br />
+                                <img src="~/lib/images/star-empty.png" alt="" class="ratingStar" data-value="1" />
+                                <img src="~/lib/images/star-empty.png" alt="" class="ratingStar" data-value="2" />
+                                <img src="~/lib/images/star-empty.png" alt="" class="ratingStar" data-value="3" />
+                                <img src="~/lib/images/star-empty.png" alt="" class="ratingStar" data-value="4" />
+                                <img src="~/lib/images/star-empty.png" alt="" class="ratingStar" data-value="5" />
+                            </td>
                         </tr>
                     }
                 </tbody>

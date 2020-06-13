@@ -31,7 +31,6 @@ namespace WebCommentsSection.Pages {
                 return Page();
             }
 
-            //_context.Comment.Name = Name;
             Comment.Timestamp = DateTime.Now;
             _context.Comment.Add(Comment);
             _context.SaveChanges();

@@ -17,6 +17,13 @@ h4 {
     color: white;
 }
 
+.ratingStar {
+    max-height: 1em;
+}
+/*.table > tbody > tr > td > img {
+    max-height: 1em;
+}*/
+
 a .navbar-brand {
     white-space: normal;
     text-align: center;

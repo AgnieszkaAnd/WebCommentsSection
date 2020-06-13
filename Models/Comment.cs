@@ -17,5 +17,8 @@ namespace WebCommentsSection.Models {
         
         [Display(Name = "Date"), DataType(DataType.Date)]
         public DateTime Timestamp { get; set; }
+
+        [Range(0,5)]
+        public int Rating { get; set; }
     }
 }
