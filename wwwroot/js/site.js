@@ -3,19 +3,15 @@
 
 // Write your Javascript code.
 
-//document.getElementById("test").onmouseover = function () {
-//	document.getElementById("test").src = "/lib/images/star-empty.png";
-//}
-
 $(function () {
 	$("img.ratingStar").mouseover(function () {
 		giveRating(this, "star-yellow.png");
 	});
 
-	//$("img.ratingStar").mouseout(function () {
-	//	giveRating($(this), "star-empty.png");
-	//	refilRating($(this));
-	//});
+	$("img.ratingStar").mouseout(function () {
+		giveRating(this, "star-empty.png");
+		giveRating(this.previousElementSibling, "star-yellow.png");
+	});
 });
 
 function prevAll(element) {
@@ -34,22 +30,23 @@ function giveRating(img, image) {
 	});
 }
 
-//function refilRating(img1) {
-//	//var rt = $(img1).closest('tr').find("span.avr").text();
-//	//var img = $(img1).closest('tr').find("img[id='" + parseInt(rt) + "']");
-//	img.attr("src", "/lib/images/star-yellow.png").prevAll("img.ratingStar").attr("src", "/lib/images/star-yellow.png");
-//}
+$("img.ratingStar").click(function (e) {
+	// disable stars events after first onclick - not possible to update rating
+	// (user must reload page to update rating)
+	$("img.ratingStar").unbind("mouseout mouseover click");
 
+	var rating = 0;
+	var starsCollection = document.getElementsByClassName("ratingStar");
+	var stars = Array.from(starsCollection);
+	stars.forEach(function (element) {
+		// count if rating contains yellow star
+		if (element.src.indexOf("star-yellow.png") != -1) {
+			rating++;
+		};
+	});
 
-//      $("img.ratingStar").click(function (e) {
-//         // $("img.rating").unbind("mouseout mouseover click");
-	//	$(this).css('color', 'red');
-	//	// alert(e.currentTarget + ' was clicked!');
-	//	// call ajax methods to update database
-	//	var url = "/Movies/PostRating?rating=" + parseInt($(this).attr("id")) + "&mid=" + parseInt($(this).attr("mid"));
-//          $.post(url, null, function (data) {
-//              $(e.currentTarget).closest('tr').find('div.result').text(data).css('color','red') // $("#result").text(data);
-	//	});
-	//});
+	document.getElementById("rating").setAttribute("value", rating);
+
+});
 
 
