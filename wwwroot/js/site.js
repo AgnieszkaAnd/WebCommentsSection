@@ -3,19 +3,15 @@
 
 // Write your Javascript code.
 
-//document.getElementById("test").onmouseover = function () {
-//	document.getElementById("test").src = "/lib/images/star-empty.png";
-//}
-
 $(function () {
 	$("img.ratingStar").mouseover(function () {
 		giveRating(this, "star-yellow.png");
 	});
 
-	//$("img.ratingStar").mouseout(function () {
-	//	giveRating($(this), "star-empty.png");
-	//	refilRating($(this));
-	//});
+	$("img.ratingStar").mouseout(function () {
+		giveRating(this, "star-empty.png");
+		giveRating(this.previousElementSibling, "star-yellow.png");
+	});
 });
 
 function prevAll(element) {
@@ -33,13 +29,6 @@ function giveRating(img, image) {
 		item.setAttribute('src', "/lib/images/" + image);
 	});
 }
-
-//function refilRating(img1) {
-//	//var rt = $(img1).closest('tr').find("span.avr").text();
-//	//var img = $(img1).closest('tr').find("img[id='" + parseInt(rt) + "']");
-//	img.attr("src", "/lib/images/star-yellow.png").prevAll("img.ratingStar").attr("src", "/lib/images/star-yellow.png");
-//}
-
 
 //      $("img.ratingStar").click(function (e) {
 //         // $("img.rating").unbind("mouseout mouseover click");
