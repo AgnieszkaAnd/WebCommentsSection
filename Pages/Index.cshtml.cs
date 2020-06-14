@@ -19,6 +19,7 @@ namespace WebCommentsSection.Pages {
         //public Comment IndexComment { get; set; }
         public void OnGet() {
             var comments = from c in _context.Comment
+                           orderby c.Timestamp descending
                            select c;
 
             Comments = comments.ToList();

@@ -24,15 +24,17 @@ h4 {
 .ratingStarDisplay {
     max-height: 1em;
 }
-/*.table > tbody > tr > td > img {
-    max-height: 1em;
-}*/
 
 a .navbar-brand {
     white-space: normal;
     text-align: center;
     word-break: break-all;
 }
+
+/*.border-top footer text-muted .container {
+    font-size: 0.5em;
+    color: white;
+}*/
 
 /* Provide sufficient contrast against white background */
 a {
@@ -94,5 +96,23 @@ body {
   bottom: 0;
   width: 100%;
   white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+  /*line-height: 60px;  Vertically center the text there */
+}
+
+.border-top footer .container {
+    color: white;
+}
+
+.footer .container a {
+    color: white;
+}
+
+.footer .container p {
+    font-size: 0.5em;
+    color: #2c2149;
+    justify-content: center;
+}
+
+.footer .container p a {
+    color: #2c2149;
 }
