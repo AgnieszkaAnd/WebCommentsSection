@@ -23,7 +23,8 @@ namespace WebCommentsSection
 
         public async Task OnGetAsync()
         {
-            Comment = await _context.Comment.ToListAsync();
+            Comment = await _context.Comment.OrderByDescending(c => c.Timestamp).ToListAsync();
+            //Comment = Comment.OrderByDescending(c => c.Timestamp).ToList();
         }
     }
 }

@@ -30,6 +30,11 @@
                 <span asp-validation-for="Comment.Timestamp" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Comment.Rating" class="control-label"></label>
+                <input type="number" asp-for="Comment.Rating" class="form-control" />
+                <span asp-validation-for="Comment.Rating" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>

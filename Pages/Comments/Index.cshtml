@@ -22,6 +22,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Comment[0].Timestamp)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment[0].Rating)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -36,6 +39,20 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Timestamp)
+            </td>
+            <td>
+                @if (item.Rating == 0) {
+                    for (int star = 0; star < 5; star++) {
+                        <img src="~/lib/images/star-empty.png" alt="" class="ratingStarDisplay" />
+                    }
+                } else {
+                    for (int star = 0; star < item.Rating; star++) {
+                        <img src="~/lib/images/star-yellow.png" alt="" class="ratingStarDisplay" />
+                    }
+                    for (int star = 0; star < (5 - item.Rating); star++) {
+                        <img src="~/lib/images/star-empty.png" alt="" class="ratingStarDisplay" />
+                    }
+                }
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
