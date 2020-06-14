@@ -15,6 +15,11 @@ h4 {
 
 .table > tbody > tr > td {
     color: white;
+    max-width: 40vw;
+}
+
+.table > thead > tr > th {
+    color: white;
 }
 
 .ratingStar {
