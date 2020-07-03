@@ -3,16 +3,41 @@
 
 // Write your Javascript code.
 
+
+// skrot do funkcji document.load: $(functon() {...kod...})
 $(function () {
-	$("img.ratingStar").mouseover(function () {
-		giveRating(this, "star-yellow.png");
+	$("img.ratingStar").mouseover(function (e) {
+		// this w JS można podmienić, najlepiej dać tutaj: mouseover(function (element) { ... uzycie element ... } - b.bezpieczne
+		// nie polegać na this!!!; Angular i inne biblioteki podmieniają specjalnie this
+		giveRating(e.target, "star-yellow.png");
 	});
 
 	$("img.ratingStar").mouseout(function () {
 		giveRating(this, "star-empty.png");
 		giveRating(this.previousElementSibling, "star-yellow.png");
 	});
+
+
+	$("img.ratingStar").click(function () {
+		// disable stars events after first onclick - not possible to update rating
+		// (user must reload page to update rating)
+		$("img.ratingStar").unbind("mouseout mouseover click");
+
+		var rating = 0;
+		var starsCollection = document.getElementsByClassName("ratingStar");
+		var stars = Array.from(starsCollection);
+		stars.forEach(function (element) {
+			// count if rating contains yellow star
+			if (element.src.indexOf("star-yellow.png") != -1) {
+				rating++;
+			};
+		});
+
+		$("#rating").setAttribute("value", rating);
+
+	});
 });
+
 
 function prevAll(element) {
 	var result = [];
@@ -29,24 +54,3 @@ function giveRating(img, image) {
 		item.setAttribute('src', "/lib/images/" + image);
 	});
 }
-
-$("img.ratingStar").click(function (e) {
-	// disable stars events after first onclick - not possible to update rating
-	// (user must reload page to update rating)
-	$("img.ratingStar").unbind("mouseout mouseover click");
-
-	var rating = 0;
-	var starsCollection = document.getElementsByClassName("ratingStar");
-	var stars = Array.from(starsCollection);
-	stars.forEach(function (element) {
-		// count if rating contains yellow star
-		if (element.src.indexOf("star-yellow.png") != -1) {
-			rating++;
-		};
-	});
-
-	document.getElementById("rating").setAttribute("value", rating);
-
-});
-
-

@@ -9,7 +9,7 @@ namespace WebCommentsSection.Models {
     public class Comment {
         public int ID { get; set; }
 
-        [Required, RegularExpression(@"^[A-Z]+[a-zA-Z0-9]*$")]
+        [Required, RegularExpression(@"^[A-Z]+[a-zA-Z0-9\s]*$")]
         public string Name { get; set; }
 
         [Required, StringLength(1000, MinimumLength = 1)]
