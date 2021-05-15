@@ -33,9 +33,8 @@ $(function () {
 			};
 		});
 
-		$("#rating").setAttribute("value", rating);
-
-	});
+		$("#rating").attr("value", rating);
+    });
 });
 
 
